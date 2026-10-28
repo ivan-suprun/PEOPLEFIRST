@@ -62,14 +62,16 @@ section{padding-block:72px 0}
 .mark{margin:0;font-weight:900;font-size:clamp(34px,11.4vw,124px);line-height:.9;letter-spacing:-.05em;white-space:nowrap}
 .hero-meta{display:flex;justify-content:space-between;align-items:baseline;gap:20px;font-size:11px;font-weight:600;letter-spacing:.18em;line-height:1.6}
 .hero-meta{justify-content:flex-start}
-.hero-meta .tag{color:var(--mute);min-width:0;text-align:left;font-size:10px}
-.hero-meta .tag b{font-weight:800}
+.hero-meta .tag{color:var(--mute);min-width:0;text-align:left;font-size:11px;white-space:nowrap}
+.fit{display:inline-block;white-space:nowrap}
 .hero-meta .kit{white-space:nowrap}
 
 /* mission */
 .mission{padding-block:56px 8px}
 .mission p{margin:0;font-weight:900;color:var(--red);font-size:clamp(30px,8.2vw,84px);line-height:.95;letter-spacing:-.035em;max-width:14ch;text-wrap:balance}
 .mission .note{margin-top:4px}
+.mission{text-align:center}
+.mission p{margin-left:auto;margin-right:auto}
 
 /* manifesto lines */
 .lines{list-style:none;margin:0;padding:0}
@@ -136,8 +138,8 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
 <div class="hero" data-ch="Press kit 2026">
   <figure class="full"><img src="img/s01.jpg" width="1119" height="1400" alt="Two models in burgundy striped shirts and trousers in a wood-panelled office, one seated on the desk, one on the floor"></figure>
   <div class="wrap stack gap-m" style="gap:6px">
-    <h1 class="mark">People First</h1>
-    <div class="hero-meta"><span class="tag">A limited-run design house<br><b>based in Europe</b></span></div>
+    <h1 class="mark"><span class="fit" data-fit="size">People First</span></h1>
+    <div class="hero-meta"><span class="tag fit" data-fit="spread">A limited-run design house based in Europe</span></div>
   </div>
 </div>
 
@@ -311,7 +313,7 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
     </dl>
   </div>
   <div class="wrap end">
-    <div class="mark rv">People First</div>
+    <div class="mark rv"><span class="fit" data-fit="size">People First</span></div>
     <div class="rv" style="margin-top:12px">
       <p style="margin:0;font-weight:800;color:var(--red);font-size:clamp(14px,2.2vw,18px);letter-spacing:-.005em">Dedicated to simplify the art of dressing.</p>
       <footer style="padding-top:4px"><span>A limited-run design house, based in Europe</span><span class="red">2026</span></footer>
@@ -335,6 +337,28 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
     els.forEach(function(el){ if(el.classList.contains('pre')) io.observe(el); });
     setTimeout(function(){ els.forEach(function(el){ if(el.getBoundingClientRect().top<window.innerHeight) el.classList.remove('pre'); }); },2500);
   }
+  // stretch "People First" and the tagline to the full column width
+  var fits=[].slice.call(document.querySelectorAll('.fit'));
+  function fitAll(){
+    fits.forEach(function(el){
+      var box=el.parentElement, target=box.clientWidth;
+      if(!target) return;
+      if(el.getAttribute('data-fit')==='size'){
+        var fsz=100; el.style.fontSize=fsz+'px';
+        for(var k=0;k<3;k++){ var w=el.getBoundingClientRect().width; if(!w) break; fsz=fsz*target/w*0.998; el.style.fontSize=fsz+'px'; }
+      } else {
+        el.style.letterSpacing='0.12em'; el.style.fontSize='';
+        var fs=parseFloat(getComputedStyle(el).fontSize);
+        var w2=el.getBoundingClientRect().width, n=el.textContent.length-1;
+        if(w2>target){ fs=fs*target/w2; el.style.fontSize=fs+'px'; w2=el.getBoundingClientRect().width; }
+        if(n>0) el.style.letterSpacing=(0.12*fs+(target-w2)/(n+1)-0.05)+'px';
+      }
+    });
+  }
+  fitAll();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitAll);
+  window.addEventListener('resize',fitAll);
+
   var prog=document.getElementById('prog');
   var ticking=false;
   function update(){
