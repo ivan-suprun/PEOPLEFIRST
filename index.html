@@ -90,6 +90,12 @@ section{padding-block:72px 0}
 .quote{margin:0;font-weight:300;font-size:clamp(17px,3vw,26px);line-height:1.28;letter-spacing:-.005em;max-width:32ch;text-wrap:pretty}
 .quote b{font-weight:800}
 
+/* centred blocks */
+.center{text-align:center;align-items:center}
+.center .quote,.center .lede,.center .display{margin-left:auto;margin-right:auto}
+.center .colours{justify-content:center}
+.lines.center li{text-wrap:balance}
+
 /* colourways */
 .colours{display:flex;flex-wrap:wrap;gap:6px}
 .colours span{border:1px solid var(--ink);padding:6px 9px 5px;font-size:11px;font-weight:600;letter-spacing:.14em}
@@ -189,7 +195,7 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
       <h2 class="display rv">Fifteen years in fashion taught him what to leave out.</h2>
       <figure class="gap-s rv"><img src="img/f02c.jpg" width="933" height="1185" alt="Ivan Suprun in a navy half-zip sweatshirt on a blue chair at his desk" loading="lazy"></figure>
     </div>
-    <div class="stack gap-m">
+    <div class="stack gap-m center">
       <p class="quote rv">“After working with clothes for more than fifteen years, I can confidently say that <b>there is no need to implement rocket science into your designs.</b> Everything needs to be understandable, and clothes are no exception. <b class="red">I wanted to create a brand where you can buy five pieces and be fully prepared for any occasion.</b>”</p>
       <div class="note rv">Ivan Suprun · Founder &amp; Creative Director</div>
     </div>
@@ -203,7 +209,7 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
     <h2 class="display rv" style="font-size:clamp(34px,9vw,92px);line-height:.9;letter-spacing:-.035em">The Long Afternoon</h2>
   </div>
   <figure class="full gap-m rv"><img src="img/s07.jpg" width="1119" height="1400" alt="Model in a striped shirt and trousers holding a black bag and a bouquet of flowers" loading="lazy"></figure>
-  <div class="wrap stack gap-m" style="gap:18px">
+  <div class="wrap stack gap-m center" style="gap:18px">
     <p class="lede rv"><b>One signature cut,</b> a press-stud shirt with stud-fastened side vents and straight trousers, in <b class="red">seven numbered colourways,</b> Nos. 20–26. Designed to be mixed, never sold as sets.</p>
     <div class="colours rv"><span>Coral Loom</span><span>Pale Blue</span><span>Greenhouse</span><span>Burgundy</span><span>Tobacco Line</span><span>Purple Grey</span><span>Sand Hour</span></div>
   </div>
@@ -248,7 +254,7 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
     <figure style="flex:0.8"><img src="img/s2940.jpg" width="1080" height="1350" alt="A boy in a red striped pyjama suit standing in a living room" loading="lazy"></figure>
   </div>
   <div class="wrap gap-l">
-    <ul class="lines">
+    <ul class="lines center">
       <li class="rv">The simplest way to build <span class="red">a true family look:</span> parents and children in the same piece, each in a size of their own.</li>
     </ul>
   </div>
@@ -283,7 +289,7 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
   <div class="wrap gap-m split">
     <div class="stack">
       <p class="lede rv"><b>Ivan Suprun,</b> Founder &amp; Creative Director, and <b>Sonya Suprun,</b> Co-founder &amp; CEO, both built their careers inside the fashion industry. Together they set out to prove that <b class="red">great basics never date.</b></p>
-      <div class="stack gap-m rv" style="gap:10px">
+      <div class="stack gap-m rv center" style="gap:10px">
         <p class="quote">“People are at the centre of everything we do. <b>We support local artisans by paying the real cost of making,</b> not a cost cut down by mass production.”</p>
         <div class="note">Sonya Suprun · Co-founder &amp; CEO</div>
       </div>
