@@ -61,8 +61,9 @@ section{padding-block:72px 0}
 .hero{padding-block:0}
 .mark{margin:0;font-weight:900;font-size:clamp(34px,11.4vw,124px);line-height:.9;letter-spacing:-.05em;white-space:nowrap}
 .hero-meta{display:flex;justify-content:space-between;align-items:baseline;gap:20px;font-size:11px;font-weight:600;letter-spacing:.18em;line-height:1.6}
-.hero-meta{justify-content:flex-start}
-.hero-meta .tag{color:var(--mute);min-width:0;text-align:left;font-size:11px;white-space:nowrap}
+.hero .mark{text-align:center}
+.hero-meta{justify-content:center}
+.hero-meta .tag{color:var(--mute);min-width:0;text-align:center;font-size:11px;white-space:nowrap}
 .fit{display:inline-block;white-space:nowrap}
 .hero-meta .kit{white-space:nowrap}
 
@@ -71,7 +72,8 @@ section{padding-block:72px 0}
 .mission p{margin:0;font-weight:900;color:var(--red);font-size:clamp(30px,8.2vw,84px);line-height:.95;letter-spacing:-.035em;max-width:14ch;text-wrap:balance}
 .mission .note{margin-top:4px}
 .mission{text-align:center;padding-top:40px}
-.mission p{margin-left:auto;margin-right:auto;max-width:none;font-size:clamp(22px,7.1vw,90px);line-height:1}
+.mission p{margin-left:auto;margin-right:auto;max-width:none;font-size:clamp(24px,7.6vw,96px);line-height:1}
+.mission p .fit{line-height:.98}
 .mission .ml{white-space:nowrap}
 
 /* manifesto lines */
@@ -150,10 +152,11 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
 <!-- MISSION -->
 <div class="mission wrap" data-ch="Press kit 2026">
   <div class="rv">
-    <p><span class="ml">Dedicated to simplify</span><br><span class="ml">the art of dressing.</span></p>
+    <p><span class="fit" data-fit="size" data-scale="0.94" data-max="104">Dedicated to simplify<br>the art of dressing.</span></p>
     <div class="note">The single idea behind every piece we make</div>
   </div>
 </div>
+<figure class="full gap-l rv"><img src="img/s2901.jpg" width="1080" height="1350" alt="Woman in a silk headscarf and round sunglasses holding a large bouquet, in striped trousers on a sunlit terrace" loading="lazy"></figure>
 
 <!-- 01 THE HOUSE -->
 <section id="house" data-ch="01 — The house">
@@ -349,7 +352,9 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
       if(!target) return;
       if(el.getAttribute('data-fit')==='size'){
         var fsz=100; el.style.fontSize=fsz+'px';
-        for(var k=0;k<3;k++){ var w=el.getBoundingClientRect().width; if(!w) break; fsz=fsz*target/w*0.998; el.style.fontSize=fsz+'px'; }
+        var sc=parseFloat(el.getAttribute('data-scale'))||1;
+        for(var k=0;k<3;k++){ var w=el.getBoundingClientRect().width; if(!w) break; fsz=fsz*target*sc/w*0.998; el.style.fontSize=fsz+'px'; }
+        var mx=parseFloat(el.getAttribute('data-max')); if(mx&&fsz>mx) el.style.fontSize=mx+'px';
       } else {
         el.style.letterSpacing='0.12em'; el.style.fontSize='';
         var fs=parseFloat(getComputedStyle(el).fontSize);
