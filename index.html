@@ -109,6 +109,9 @@ section{padding-block:72px 0}
 .rows>div:last-child{border-bottom:1px solid var(--line)}
 .rows dt{font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--red);padding-top:4px}
 .rows dd{margin:0;font-size:14px;line-height:1.5;min-width:0;overflow-wrap:anywhere}
+.rows dd a{color:var(--red);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.rows dd b a{color:var(--ink)}
+.rows dd a:focus-visible{outline:2px solid var(--red);outline-offset:2px}
 .rows dd b{display:block;font-size:clamp(15px,2.4vw,19px);letter-spacing:-.005em;line-height:1.2;margin-bottom:4px}
 
 .end{padding-block:56px 24px}
@@ -307,9 +310,9 @@ footer{display:flex;justify-content:space-between;gap:16px;font-size:10px;font-w
     <div class="kicker rv">Press <span>&amp; contacts</span></div>
     <h2 class="display rv">Let’s talk.</h2>
     <dl class="rows gap-s">
-      <div class="rv"><dt>Press</dt><dd><b>[Name]</b>[Email] · [Phone]</dd></div>
-      <div class="rv"><dt>Online</dt><dd><b>peoplefirst.eu.com</b>Instagram [@handle]</dd></div>
-      <div class="rv"><dt>Images</dt><dd><b>High-resolution campaign images</b>[Download link]</dd></div>
+      <div class="rv"><dt>Press</dt><dd><b>Press enquiries</b><a href="mailto:hello@pplfrst.studio" style="text-transform:none">hello@pplfrst.studio</a></dd></div>
+      <div class="rv"><dt>Online</dt><dd><b><a href="https://www.peoplefirst.eu.com" target="_blank" rel="noopener">peoplefirst.eu.com</a></b><a href="https://www.instagram.com/peoplefrst" target="_blank" rel="noopener">Instagram @peoplefrst</a></dd></div>
+      <div class="rv"><dt>Images</dt><dd><b>High-resolution campaign images</b><a href="https://drive.google.com/drive/folders/1-HqoBeVTceMiRiX9BOC0yCvkD-KIupHY" target="_blank" rel="noopener">Download from Google Drive →</a></dd></div>
       <div class="rv"><dt>On request</dt><dd><b>Interviews and samples</b>Founder interviews in English and Russian. Samples for editorial shoots.</dd></div>
     </dl>
   </div>
